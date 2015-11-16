@@ -1,0 +1,30 @@
+{% extends 'page.html' %}
+{% block content %}
+<div class="container">
+  <a href="{{ url_for('.summary') }}" class="btn btn-default">since 2014</a>
+  <a href="{{ url_for('.summary', year=2014, month=7) }}" class="btn btn-default">2014.7~12</a>
+  <a href="{{ url_for('.summary', year=2015, month=1) }}" class="btn btn-default">2015.1~6</a>
+  <a href="{{ url_for('.summary', year=2015, month=7) }}" class="btn btn-default">2015.7~12</a>
+  <p></p>
+  <table class="table1">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Accesses</th>
+        <th>Gospel Accepted</th>
+        <th>Email Submission</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in stat %}
+      <tr>
+        <td>{{ s.country }}</td>
+        <td>{{ s.accesses }}</td>
+        <td>{{ s.accepted }}</td>
+        <td>{{ s.email }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

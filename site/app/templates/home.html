@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+.flashes {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+ul {
+  padding-left: 15px;
+}
+</style>
+{% endblock %}
+{% block body %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+      <div class="container">
+        <li class="alert alert-info alert-dismissible" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </li>
+      </div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<div class="container">
+  <div class="page-header col-xs-12 col-sm-offset-3 col-sm-6">
+    <h2>info.hadiye.org</h2>
+  </div>
+  <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+    <div class="well">
+      <form action="" method="POST">
+        <div class="form-group">
+          <label for="userid">USER ID</label>
+          <input class="form-control" type="text" name="userid" id="userid" />
+          <br/>
+          <label for="pwd">PASSWORD</label>
+          <input class="form-control" type="password" name="pwd" id="pwd" />
+          <br/>
+          <input type="submit" class="btn btn-success" value="로그인"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
